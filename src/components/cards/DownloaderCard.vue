@@ -208,6 +208,8 @@ const getIcon = computed(() => {
       return getLogoUrl('transmission')
     case 'rtorrent':
       return getLogoUrl('rtorrent')
+    case 'aria2':
+      return getLogoUrl('aria2')
     default:
       return getLogoUrl('downloader')
   }
@@ -484,6 +486,52 @@ onUnmounted(() => {
                   type="password"
                   :label="t('downloader.password')"
                   :hint="t('downloader.password')"
+                  persistent-hint
+                  active
+                  prepend-inner-icon="mdi-lock"
+                />
+              </VCol>
+            </VRow>
+            <VRow v-else-if="downloaderInfo.type == 'aria2'">
+              <VCol cols="12" md="6">
+                <VTextField
+                  v-model="downloaderInfo.name"
+                  :label="t('downloader.name')"
+                  :placeholder="t('downloader.nameRequired')"
+                  :hint="t('downloader.name')"
+                  persistent-hint
+                  active
+                  prepend-inner-icon="mdi-label"
+                />
+              </VCol>
+              <VCol cols="12" md="6">
+                <VTextField
+                  v-model="downloaderInfo.config.host"
+                  :label="t('downloader.host')"
+                  placeholder="http(s)://ip"
+                  :hint="t('downloader.aria2HostHint')"
+                  persistent-hint
+                  active
+                  prepend-inner-icon="mdi-server"
+                />
+              </VCol>
+              <VCol cols="12" md="6">
+                <VTextField
+                  v-model="downloaderInfo.config.port"
+                  :label="t('downloader.port')"
+                  placeholder="6800"
+                  :hint="t('downloader.port')"
+                  persistent-hint
+                  active
+                  prepend-inner-icon="mdi-numeric"
+                />
+              </VCol>
+              <VCol cols="12" md="6">
+                <VTextField
+                  v-model="downloaderInfo.config.secret"
+                  type="password"
+                  :label="t('downloader.aria2Secret')"
+                  :hint="t('downloader.aria2Secret')"
                   persistent-hint
                   active
                   prepend-inner-icon="mdi-lock"

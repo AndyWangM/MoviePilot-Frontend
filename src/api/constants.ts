@@ -56,6 +56,10 @@ export const downloaderOptions = [
     value: 'rtorrent',
     title: i18n.global.t('setting.system.rtorrent'),
   },
+  {
+    value: 'aria2',
+    title: i18n.global.t('setting.system.aria2'),
+  },
 ]
 
 export const downloaderDict = downloaderOptions.reduce((dict, item) => {
