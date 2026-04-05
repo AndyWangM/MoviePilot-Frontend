@@ -12,10 +12,7 @@ declare let self: ServiceWorkerGlobalScope & {
 
 // 缓存版本控制
 const RESOURCE_VERSION = 'V2'
-// 开发环境下 __APP_VERSION__ / __BUILD_TIME__ 未被注入，用 'dev' 兜底
-const _appVer = typeof __APP_VERSION__ !== 'undefined' ? __APP_VERSION__ : 'dev'
-const _buildTime = typeof __BUILD_TIME__ !== 'undefined' ? __BUILD_TIME__ : 'dev'
-const CACHE_VERSION = `${_appVer}-${_buildTime}`
+const CACHE_VERSION = `${__APP_VERSION__}-${__BUILD_TIME__}` // 开发环境下无法使用此环境变量，生产环境正常
 
 // 启用导航预载
 navigationPreload.enable()
